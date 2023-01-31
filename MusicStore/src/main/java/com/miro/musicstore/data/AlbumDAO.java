@@ -1,23 +1,23 @@
 package com.miro.musicstore.data;
 
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class AlbumDAO {
     @Id
     private Long id;
     private String title;
-    private Date releaseDate;++
+    private Date releaseDate;
     private String description;
     private List<SongDAO> songs;
+    private Genre genre;
 
+    private ArtistDAO artist;
 
     public String getDescription() {
         return description;
@@ -50,6 +50,15 @@ public class AlbumDAO {
         return songs;
     }
 
+     @ManyToOne
+    public ArtistDAO getArtist() {
+        return artist;
+    }
+
+    public void setArtist(ArtistDAO artist) {
+        this.artist = artist;
+    }
+
     public void setSongs(List<SongDAO> songs) {
         this.songs = songs;
     }
@@ -60,5 +69,12 @@ public class AlbumDAO {
 
     public Long getId() {
         return id;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+    public Genre getGenre() {
+        return genre;
     }
 }

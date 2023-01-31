@@ -1,9 +1,15 @@
 package com.miro.musicstore.data;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import org.springframework.boot.autoconfigure.web.WebProperties;
+
+import java.sql.Date;
 
 @Entity
-public class VinylDAO extends AlbumDAO{
+public class CDDAO extends AlbumDAO{
 
     private double price;
     private int quantity;
@@ -32,4 +38,5 @@ public class VinylDAO extends AlbumDAO{
     public void setSpecialEdition(boolean value) {
         this.isSpecialEdition = value;
     }
+
 }
